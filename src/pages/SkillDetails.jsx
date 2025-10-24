@@ -1,9 +1,14 @@
-import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { toast } from 'react-hot-toast';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
+import toast from 'react-hot-toast';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SkillDetails = () => {
-  const { id } = useParams();
+  const { skillId } = useParams();
+  const { currentUser } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [skill, setSkill] = useState(null);
   const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({
@@ -11,21 +16,35 @@ const SkillDetails = () => {
     email: ''
   });
 
+  // Check if user is logged in
   useEffect(() => {
-    fetch('/skills.json')
-      .then(res => res.json())
-      .then(data => {
-        const foundSkill = data.find(s => s.skillId === parseInt(id));
+    if (!currentUser) {
+      // Store the current path to redirect back after login
+      navigate('/login', { state: { from: location.pathname } });
+    }
+  }, [currentUser, navigate, location]);
+
+  // Fetch skill data
+  useEffect(() => {
+    const fetchSkillData = async () => {
+      try {
+        const response = await fetch('/skills.json');
+        const data = await response.json();
+        const foundSkill = data.find(item => item.skillId === parseInt(skillId));
         setSkill(foundSkill);
         setLoading(false);
-      })
-      .catch(err => {
-        console.error('Error fetching skill:', err);
+      } catch (error) {
+        console.error('Error fetching skill data:', error);
         setLoading(false);
-      });
-  }, [id]);
+      }
+    };
 
-  const handleChange = (e) => {
+    if (currentUser) {
+      fetchSkillData();
+    }
+  }, [skillId, currentUser]);
+
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -35,14 +54,16 @@ const SkillDetails = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Show success toast
     toast.success('Session booked successfully!');
+    // Clear form
     setFormData({ name: '', email: '' });
   };
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-64">
-        <span className="loading loading-spinner loading-lg"></span>
+      <div className="flex justify-center items-center h-screen">
+        <div className="loading loading-spinner loading-lg"></div>
       </div>
     );
   }
@@ -56,9 +77,6 @@ const SkillDetails = () => {
           </svg>
           <span>Skill not found!</span>
         </div>
-        <div className="mt-4">
-          <Link to="/" className="btn btn-primary">Back to Home</Link>
-        </div>
       </div>
     );
   }
@@ -71,67 +89,61 @@ const SkillDetails = () => {
         </figure>
         <div className="card-body lg:w-1/2">
           <h2 className="card-title text-3xl">{skill.skillName}</h2>
-          <p className="text-lg font-semibold">by {skill.providerName}</p>
-          <p className="text-gray-600">{skill.providerEmail}</p>
-          <div className="flex items-center my-2">
-            <div className="rating rating-md">
+          <p className="text-lg">Provider: {skill.providerName}</p>
+          <p className="text-lg">Email: {skill.providerEmail}</p>
+          <div className="flex items-center">
+            <div className="rating">
               {[...Array(5)].map((_, i) => (
                 <input
                   key={i}
                   type="radio"
-                  name="rating"
+                  name="rating-2"
                   className="mask mask-star-2 bg-orange-400"
                   checked={i < Math.floor(skill.rating)}
                   readOnly
                 />
               ))}
             </div>
-            <span className="ml-2 text-lg">{skill.rating}</span>
+            <span className="ml-2">{skill.rating}</span>
           </div>
-          <div className="badge badge-outline p-3 mb-4">{skill.category}</div>
-          <p className="text-lg mb-4">{skill.description}</p>
-          <div className="flex items-center justify-between mb-4">
-            <div className="text-2xl font-bold">${skill.price}/session</div>
-            <div className="text-lg">
-              <span className="font-semibold">{skill.slotsAvailable}</span> slots available
-            </div>
-          </div>
+          <p className="text-lg">Price: ${skill.price}/session</p>
+          <p className="text-lg">Slots Available: {skill.slotsAvailable}</p>
+          <p className="text-lg">Category: {skill.category}</p>
+          <p>{skill.description}</p>
           
           <div className="divider"></div>
           
-          <h3 className="text-xl font-bold mb-4">Book a Session</h3>
-          <form onSubmit={handleSubmit}>
-            <div className="form-control mb-4">
+          <h3 className="text-xl font-bold">Book a Session</h3>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="form-control">
               <label className="label">
-                <span className="label-text">Your Name</span>
+                <span className="label-text">Name</span>
               </label>
-              <input 
-                type="text" 
-                placeholder="Enter your name" 
-                className="input input-bordered" 
+              <input
+                type="text"
                 name="name"
                 value={formData.name}
-                onChange={handleChange}
-                required 
-              />
-            </div>
-            <div className="form-control mb-4">
-              <label className="label">
-                <span className="label-text">Your Email</span>
-              </label>
-              <input 
-                type="email" 
-                placeholder="Enter your email" 
-                className="input input-bordered" 
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required 
+                onChange={handleInputChange}
+                placeholder="Your name"
+                className="input input-bordered"
+                required
               />
             </div>
             <div className="form-control">
-              <button type="submit" className="btn btn-primary">Book Session</button>
+              <label className="label">
+                <span className="label-text">Email</span>
+              </label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                placeholder="Your email"
+                className="input input-bordered"
+                required
+              />
             </div>
+            <button type="submit" className="btn btn-primary">Book Session</button>
           </form>
         </div>
       </div>

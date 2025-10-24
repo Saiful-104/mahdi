@@ -94,7 +94,7 @@ const Home = () => {
       </div>
 
       {/* Popular Skills */}
-      <section className="mb-12" data-aos="fade-up">
+       <section className="mb-12" data-aos="fade-up">
         <h2 className="text-3xl font-bold mb-6 text-center">Popular Skills</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skills.slice(0, 6).map(skill => (
@@ -123,14 +123,18 @@ const Home = () => {
                   </div>
                   <div className="text-lg font-bold">${skill.price}/session</div>
                 </div>
+                
+                {/* এখানেই View Details বাটনটি */}
                 <div className="card-actions justify-end mt-2">
                   <Link to={`/skill/${skill.skillId}`} className="btn btn-primary btn-sm">View Details</Link>
                 </div>
+                
               </div>
             </div>
           ))}
         </div>
       </section>
+
 
       {/* Top Rated Providers */}
       <section className="mb-12" data-aos="fade-up">

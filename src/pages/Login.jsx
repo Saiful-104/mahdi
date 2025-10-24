@@ -9,13 +9,16 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  
+  // এই দুটি hook নিতে হবে
   const { loginWithEmail, loginWithGoogle, currentUser } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
     if (currentUser) {
-      const from = location.state?.from?.pathname || '/';
+      // ইউজার যদি ইতিমধ্যে লগইন থাকে, তাহলে সে যেই পেজে যেতে চেয়েছিল সেখানে পাঠানো হবে
+      const from = location.state?.from?.pathname || "/";
       navigate(from, { replace: true });
     }
   }, [currentUser, navigate, location]);
@@ -26,8 +29,12 @@ const Login = () => {
     
     try {
       await loginWithEmail(email, password);
-      const from = location.state?.from?.pathname || '/';
+      
+      // এখানেই এই কোডটি ব্যবহার করতে হবে
+      // সফল লগইনের পর ইউজারকে যেই পেজে যেতে চেয়েছিল সেখানে পাঠানো হবে
+      const from = location.state?.from?.pathname || "/";
       navigate(from, { replace: true });
+      
     } catch (error) {
       console.error(error);
     } finally {
@@ -40,8 +47,11 @@ const Login = () => {
     
     try {
       await loginWithGoogle();
-      const from = location.state?.from?.pathname || '/';
+      
+      // Google লগইনের ক্ষেত্রেও একই কাজ করতে হবে
+      const from = location.state?.from?.pathname || "/";
       navigate(from, { replace: true });
+      
     } catch (error) {
       console.error(error);
     } finally {
