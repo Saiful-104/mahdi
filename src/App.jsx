@@ -8,6 +8,7 @@ import Signup from './pages/Signup';
 import MyProfile from './pages/MyProfile';
 import ForgotPassword from './pages/ForgotPassword';
 import UpdateProfile from './pages/UpdateProfile';
+import ErrorPage from './pages/ErrorPage';
 import { AuthProvider } from './contexts/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import SkillDetails from './pages/SkillDetails';
@@ -25,14 +26,14 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
-             <Route 
-  path="/skill/:skillId" 
-  element={
-    <ProtectedRoute>
-      <SkillDetails />
-    </ProtectedRoute>
-} 
-/>
+              <Route 
+                path="/skill/:skillId" 
+                element={
+                  <ProtectedRoute>
+                    <SkillDetails />
+                  </ProtectedRoute>
+                } 
+              />
               <Route 
                 path="/profile" 
                 element={
@@ -49,6 +50,8 @@ function App() {
                   </ProtectedRoute>
                 } 
               />
+              {/* 404 Error Route - should be last */}
+              <Route path="*" element={<ErrorPage />} />
             </Routes>
           </main>
           <Footer />
