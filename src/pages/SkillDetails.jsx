@@ -84,7 +84,7 @@ const SkillDetails = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-12">
       <div className="container mx-auto px-4 space-y-10">
-        {/* Skill Image + Details (Same Row) */}
+      
         <div className="flex flex-col lg:flex-row bg-white shadow-2xl rounded-2xl overflow-hidden border border-gray-100">
           {/* Image Section */}
           <div className="lg:w-1/2 relative">
