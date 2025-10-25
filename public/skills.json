@@ -8,21 +8,23 @@
     "rating": 4.8,
     "slotsAvailable": 3,
     "description": "Acoustic guitar classes for complete beginners.",
-    "image": "https://i.postimg.cc/LXpKq2qN/guitar.jpg",
+    "image": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=900&q=60",
     "category": "Music"
   },
-  {
-    "skillId": 2,
-    "skillName": "Spoken English Practice",
-    "providerName": "Sara Hossain",
-    "providerEmail": "sara@skillswap.com",
-    "price": 10,
-    "rating": 4.6,
-    "slotsAvailable": 5,
-    "description": "Conversational English sessions for non-native speakers.",
-    "image": "https://i.postimg.cc/3Jz8Qv6p/english.jpg",
-    "category": "Language"
-  },
+   {
+  "skillId": 2,
+  "skillName": "Spoken English Practice",
+  "providerName": "Sara Hossain",
+  "providerEmail": "sara@skillswap.com",
+  "price": 10,
+  "rating": 4.6,
+  "slotsAvailable": 5,
+  "description": "Conversational English sessions for non-native speakers.",
+  "image": "https://media.istockphoto.com/id/106677451/photo/hand-writing-on-a-chalkboard-in-an-language-english-class.jpg?s=612x612&w=0&k=20&c=J6bD5YwY2uB6zFJ0t8kq0zj7v6fLzZs6V8Xj9XJ3zqM=",
+  "category": "Language"
+},
+
+
   {
     "skillId": 3,
     "skillName": "Yoga for Beginners",
@@ -32,7 +34,7 @@
     "rating": 4.9,
     "slotsAvailable": 4,
     "description": "Relaxing yoga sessions for stress relief and flexibility.",
-    "image": "https://i.postimg.cc/9QG9y2yW/yoga.jpg",
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=900&q=60",
     "category": "Fitness"
   },
   {
@@ -44,7 +46,7 @@
     "rating": 4.7,
     "slotsAvailable": 2,
     "description": "Learn HTML, CSS, and JavaScript fundamentals.",
-    "image": "https://i.postimg.cc/6QyTqQ1W/webdev.jpg",
+    "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=60",
     "category": "Technology"
   },
   {
@@ -56,7 +58,7 @@
     "rating": 4.5,
     "slotsAvailable": 3,
     "description": "Practice your French with a native speaker.",
-    "image": "https://i.postimg.cc/7LJv6y6K/french.jpg",
+    "image": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=60",
     "category": "Language"
   },
   {
@@ -68,7 +70,7 @@
     "rating": 4.8,
     "slotsAvailable": 5,
     "description": "Learn composition, lighting, and camera settings.",
-    "image": "https://i.postimg.cc/4NQmQ3vT/photography.jpg",
+    "image": "https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=900&q=60",
     "category": "Art"
   },
   {
@@ -80,7 +82,7 @@
     "rating": 4.9,
     "slotsAvailable": 2,
     "description": "Master authentic Italian pasta and pizza recipes.",
-    "image": "https://i.postimg.cc/8CkXzKJ1/cooking.jpg",
+    "image": "https://images.unsplash.com/photo-1601050690597-df9977daec8a?auto=format&fit=crop&w=900&q=60",
     "category": "Cooking"
   },
   {
@@ -92,7 +94,7 @@
     "rating": 4.7,
     "slotsAvailable": 4,
     "description": "Learn SEO, social media marketing, and content strategy.",
-    "image": "https://i.postimg.cc/8zGQv9jK/marketing.jpg",
+    "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=60",
     "category": "Business"
   }
 ]

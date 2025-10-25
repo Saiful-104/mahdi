@@ -5,13 +5,12 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import SkillDetails from './pages/SkillDetails';
 import MyProfile from './pages/MyProfile';
 import ForgotPassword from './pages/ForgotPassword';
 import UpdateProfile from './pages/UpdateProfile';
 import { AuthProvider } from './contexts/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
-import SkillDetails from './components/SkillDetails';
+import SkillDetails from './pages/SkillDetails';
 import './App.css';
 
 function App() {

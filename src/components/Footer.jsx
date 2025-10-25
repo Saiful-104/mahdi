@@ -1,3 +1,5 @@
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+
 const Footer = () => {
   return (
     <footer className="footer p-10 bg-base-200 text-base-content">
@@ -22,21 +24,20 @@ const Footer = () => {
         <a className="link link-hover">Cookie policy</a>
       </div>
       <div>
-        <span className="footer-title">Contact</span>
-        <div className="form-control w-80">
-          <label className="label">
-            <span className="label-text">Enter your email address</span>
-          </label>
-          <div className="relative">
-            <input type="text" placeholder="username@site.com" className="input input-bordered w-full pr-16" />
-            <button className="btn btn-primary absolute top-0 right-0 rounded-l-none">Subscribe</button>
-          </div>
-        </div>
-        <div className="flex gap-4 mt-4">
-          <a className="link link-hover">Facebook</a>
-          <a className="link link-hover">Twitter</a>
-          <a className="link link-hover">Instagram</a>
-          <a className="link link-hover">LinkedIn</a>
+        <span className="footer-title">Follow Us</span>
+        <div className="flex gap-4 mt-4 text-xl">
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600">
+            <FaFacebookF />
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400">
+            <FaTwitter />
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-pink-500">
+            <FaInstagram />
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-700">
+            <FaLinkedinIn />
+          </a>
         </div>
       </div>
     </footer>
