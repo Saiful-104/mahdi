@@ -26,11 +26,11 @@ const Home = () => {
       });
   }, []);
 
-  const topProviders = [
+    const topProviders = [
     { id: 1, name: 'Alex Martin', rating: 4.9, skills: 5, image: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=900&q=60' },
-    { id: 2, name: 'Priya Sharma', rating: 4.9, skills: 3, image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=900&q=60' },
-    { id: 3, name: 'Giuseppe Rossi', rating: 4.8, skills: 4, image: 'https://images.unsplash.com/photo-1601050690597-df9977daec8a?auto=format&fit=crop&w=900&q=60' },
-    { id: 4, name: 'Emma Wilson', rating: 4.7, skills: 6, image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=60' }
+    { id: 2, name: 'Priya Sharma', rating: 4.9, skills: 3, image: 'https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?auto=format&fit=crop&w=900&q=60' },
+    { id: 3, name: 'Giuseppe Rossi', rating: 4.8, skills: 4, image: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=900&q=60' },
+    { id: 4, name: 'Emma Wilson', rating: 4.7, skills: 6, image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=60' }
   ];
 
   if (loading) {
